@@ -1,0 +1,40 @@
+.container{
+   height: 100%;
+   background: whitesmoke;
+   display: flex;
+   
+   justify-content: center;
+   align-items: center;
+   margin: 1rem;
+}
+.box {
+    background: white;
+    border-radius: 10px;
+    padding: var(--padding-md) var(--padding-md);
+    color: rgb(30, 41, 59);
+    margin: var(--margin-md) ;
+    
+    
+    h1 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: var(--margin-xxs);
+        @media screen and (max-width: 600px) {
+            font-size: 1.2rem;
+        }
+
+        svg {
+            font-size: 2rem;
+            flex-shrink: 0;
+            @media screen and (max-width: 600px) {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+    
+
