@@ -22,7 +22,8 @@ function App() {
   return (
     <div className="App">
       <NavContext.Provider value={value}>
-        {window.location.pathname != "/signup" && <Navbar />}
+        {window.location.pathname != "/signup" &&
+          window.location.pathname != "/signin" && <Navbar />}
         <Container
           stickyNav={<RightNavbar name="Lucifer" role="Administor" />}
           content={
@@ -31,7 +32,7 @@ function App() {
               <Route path="/signin" element={<Signin />} />
               <Route path="*" element={<main>NOT FOUND</main>} />
               <Route path="/" element={<Dashboard name="Lucifer" />} />
-              <Route path="/dashBoard" element={<Dashboard name="Lucifer" />} />
+              <Route path="/dashboard" element={<Dashboard name="Lucifer" />} />
               <Route path="/profile" element={<MyProfile />} />
               <Route path="/add" element={<Add />} />
               <Route path="/analytics" element={<Analytics />} />
