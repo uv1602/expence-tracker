@@ -12,8 +12,8 @@ import MyProfile from "./components/MyProfile/MyProfile";
 import NavContext from "./Context/NavContext";
 import ShowRecord from "./components/ShowRecord/ShowRecord";
 import EditProfile from "./components/MyProfile/EditProfile";
-import Signup from "./components/Signup/Signup";
-import Signin from "./components/Signin/Signin";
+import Signup from "./components/Login/Signup";
+import Signin from "./components/Register/Signin";
 
 function App() {
   const [nav, setNav] = useState(false);
@@ -22,14 +22,14 @@ function App() {
   return (
     <div className="App">
       <NavContext.Provider value={value}>
-        {window.location.pathname != "/signup" &&
-          window.location.pathname != "/signin" && <Navbar />}
+        {window.location.pathname != "/login" &&
+          window.location.pathname != "/register" && <Navbar />}
         <Container
           stickyNav={<RightNavbar name="Lucifer" role="Administor" />}
           content={
             <Routes>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/signin" element={<Signin />} />
+              <Route path="/login" element={<Signup />} />
+              <Route path="/register" element={<Signin />} />
               <Route path="*" element={<main>NOT FOUND</main>} />
               <Route path="/" element={<Dashboard name="Lucifer" />} />
               <Route path="/dashboard" element={<Dashboard name="Lucifer" />} />
