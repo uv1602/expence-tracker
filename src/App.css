@@ -17,9 +17,14 @@ body {
 
     font-family: "Poppins", sans-serif;
     overflow: hidden;
-    background: rgb(240, 244, 248);
-}
+    /* background: rgb(240, 244, 248); */
+    background: #0A1929;
+    /* background:#152036; */
 
+}
+h1{
+    color:ivory;
+}
 .App {
     display: flex;
 }

@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import useClickOutside from "../../../CustomHooks/ClickOutside";
 import { useState } from "react";
 
-//ICONS
-
 //ICONS , PICS , STYLES
 import styles from "./MyProfile.module.scss";
 import { ReactComponent as Avatar } from "../../../pics/avatar.svg";
 import { Icon } from "@iconify/react";
+import { Typography } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 
 const MyProfile = ({ name, role }) => {
   const [isProfileOpen, setisProfileOpen] = useState(false);
@@ -32,7 +32,8 @@ const MyProfile = ({ name, role }) => {
 
       {/* NAME */}
       <div className={styles.name}>
-        <span>{name}</span>
+        <h6>{name}</h6>
+
         <Icon icon="ri:arrow-drop-down-line" />
       </div>
 
@@ -41,18 +42,18 @@ const MyProfile = ({ name, role }) => {
         className={`${styles.menu} ${isProfileOpen ? styles.menu_active : ""}`}
       >
         <div className={styles.info}>
-          <span className={styles.name}>
-            <Icon icon="healthicons:ui-user-profile-outline" />
-            {name}
-          </span>
+          <Typography sx={{ color: "#ffffff" }}> {name}</Typography>
+          {/* <span className={styles.name}>
+            
+          </span> */}
           <span className={styles.role}>{role}</span>
         </div>
         <div className={styles.settings}>
-          <Link to="/">
+          <Link to="/setting">
             <Icon icon="icon-park-solid:setting" />
             Settings
           </Link>
-          <Link to="/">
+          <Link to="/logout">
             <Icon icon="mdi:logout" /> Sign Out
           </Link>
         </div>

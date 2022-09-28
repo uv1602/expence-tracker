@@ -1,5 +1,5 @@
 .welcome {
-    background: rgb(199, 210, 254);
+    background: #001E3C;
     border-radius: 10px;
     padding: var(--padding-md) var(--padding-md);
     color: rgb(30, 41, 59);
@@ -8,7 +8,6 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-bottom: var(--margin-xxs);
         @media screen and (max-width: 600px) {
             font-size: 1.2rem;
         }
@@ -23,11 +22,40 @@
     }
 }
 
+.header {
+    background: #001E3C;
+    border-radius: 10px;
+    padding: var(--padding-md ) var(--padding-md );
+    color: rgb(30, 41, 59);
+    
+    
+
+    h1 {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2%;
+        @media screen and (max-width: 600px) {
+            font-size: 1.2rem;
+        }
+
+        svg {
+            font-size: 2rem;
+            flex-shrink: 0;
+            @media screen and (max-width: 600px) {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
 .box {
-    background: white;
+    // background: white;
+     background:#001E3C;
+   
     border-radius: 10px;
     padding: var(--padding-md) var(--padding-md);
-    color: rgb(30, 41, 59);
+    // color: rgb(30, 41, 59);
+    color:white;
     margin-top: 1rem;
     h1 {
         display: flex;
@@ -47,3 +75,18 @@
         }
     }
 }
+
+.endButton{
+    margin: 2%;
+    justify-content: flex-end;
+   
+}
+
+.startButton{
+    margin: 2%;
+}
+
+.button{
+    display: flex;
+}
+

@@ -1,0 +1,98 @@
+.registerbody{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background:url(../../pics/background.webp) ;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+    
+}
+
+.registerlogo{
+    border-radius: 3%;
+    width: 30rem;
+    height: fit-content;
+    color: fff;
+    background: black;
+    position: relative;
+    top: 50%;
+    left: 50% ;
+    transform: translate(-50%,-50%); 
+    box-sizing: border-box;  
+    padding: 50px 40px;
+}
+
+.avatar{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+p {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.registerlogo input{
+    width: 100%;
+    margin-bottom: var(--height);
+    border:none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 8vh;
+    font-size: 16px;
+}
+
+.registerlogo input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 6vh;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.registerlogo input[type="date"]
+{
+    height: 4vh;
+    border-bottom: 1px solid #fff;
+    color: fff;
+    background: whitesmoke;
+    padding: 2%;
+
+}
+
+.registerlogo input[type="submit"]:hover
+{
+    
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  
+}
+
+.registerlogo input[type="radio"]{
+    height:  2vh;
+}
+
+
+    
+

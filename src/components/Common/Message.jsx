@@ -1,4 +1,4 @@
-import styles from "./Dashboard.module.scss";
+// import styles from "./Dashboard.module.scss";
 import { Icon } from "@iconify/react";
 
 const Message = () => {

@@ -1,61 +1,57 @@
 import styles from "./Analytics.module.scss";
-import Line from "./Charts/Line";
 import { WiStars } from "react-icons/wi";
-import Pie from "../Dashboard/Charts/Pie";
-import Columns from "../Dashboard/Charts/Columns";
-
-const Statistics = ({ sum, percentage, title }) => {
-  return (
-    <div className={styles.statistic}>
-      <div className={styles.overview}>
-        <span className={styles.sum}>{sum}</span>
-        <span
-          className={`${styles.percentage} ${
-            percentage > 7 ? styles.percetange_green : styles.percentage_orange
-          }`}
-        >{`${percentage > 0 ? "+" : ""}${percentage}%`}</span>
-      </div>
-      <h3 className={styles.statistic_title}>{title}</h3>
-    </div>
-  );
-};
+import Header from "../Common/Header";
+import React, { useEffect, useState } from "react";
+import BarChart from "./Charts/BarChart";
+import PieChart from "./Charts/PieChart";
+import { categories } from "../../Service/ExpenseService";
+import { ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 
 const Analytics = () => {
+  const [data, setData] = useState([]);
+  const [toggle, settoggle] = useState(true);
+  useEffect(() => {
+    categories(setData);
+  }, []);
+
   return (
     <main>
-      <div className={styles.title}>
-        <WiStars />
-        <h1>Average Monthy Expences</h1>
-      </div>
-
-      <div className={styles.title}>
-        <h2>Bar Chart</h2>
-      </div>
-      <div className={styles.columns}>
-        <Columns />
-      </div>
-      <div className={styles.title}>
-        <h2>Pie Chart</h2>
-      </div>
-      <div className={styles.pie}>
-        <Pie />
-      </div>
-
-      <div className={styles.title}>
-        <h2>Analytics</h2>
-      </div>
-      <div className={styles.container}>
-        {/* ANALYTICS */}
-        <div className={styles.analytics}>
-          <div className={styles.statistics}>
-            <Statistics sum="42.3K" percentage={41} title="Unique Visitors" />
-            <Statistics sum="25.6K" percentage={-2} title="Total Pageviews" />
-            <Statistics sum="40%" percentage={10} title="Bounce Rate" />
-            <Statistics sum="2.3m" percentage={-6} title="Visit Duration" />
-          </div>
-          <div className={styles.line}>
-            <Line />
-          </div>
+      <Header message="Expense Details" ficon={<WiStars />} />
+      <div className={styles.box}>
+        {data.length === 0 && (
+          <Typography component="p" variant="p" color={"error"}>
+            ** No record found
+          </Typography>
+        )}
+        <ToggleButtonGroup
+          exclusive
+          alignment="pie"
+          aria-label="Platform"
+          sx={{
+            background: "#01579B",
+            margin: "2%",
+          }}
+        >
+          <ToggleButton
+            onClick={() => {
+              settoggle(false);
+            }}
+            value="pie"
+          >
+            Pie
+          </ToggleButton>
+          <ToggleButton
+            onClick={() => {
+              settoggle(true);
+            }}
+            value="bar"
+          >
+            Bar
+          </ToggleButton>
+        </ToggleButtonGroup>
+        <div className={styles.pie}>
+          {toggle && <BarChart bar={data} />}
+          {!toggle && <PieChart pie={data} />}
         </div>
       </div>
     </main>

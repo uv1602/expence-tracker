@@ -1,36 +1,19 @@
-const Button = ({
-  url,
-  body,
-  ficon,
-  licon,
-  colour,
-  type,
-  handleClick,
-  handleSubmit,
-}) => {
-  let name;
-  if (colour == 0) {
-    name = "btn btn-primary ";
-  } else {
-    name = "float-end btn btn-success";
-  }
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+
+const button = ({ url, body, ficon, licon, colour }) => {
   return (
-    <a href={url}>
-      {console.log(type)}
-      <button
-        className={name}
-        type={type}
-        onSubmit={handleSubmit}
-        onClick={handleClick}
+    <Link to={url} style={{ textDecoration: "none" }}>
+      <Button
+        variant="contained"
+        endIcon={licon}
+        startIcon={ficon}
+        color={colour}
       >
-        {ficon}
-        {"  "}
         {body}
-        {"  "}
-        {licon}
-      </button>
-    </a>
+      </Button>
+    </Link>
   );
 };
 
-export default Button;
+export default button;

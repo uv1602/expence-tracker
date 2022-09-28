@@ -1,6 +1,6 @@
-const data = [10, 20, 30, 40];
+const data = [10];
 
-const categories = ["Bill", "Food", "Transport", "Other"];
+const cat = ["Bill", "Food", "Transport", "Other"];
 
 const Expence = [];
 
@@ -32,6 +32,7 @@ const todayExpence = () => {
   let d = new Date();
   d = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
   console.log(d);
+  // todayexpense();
   return expence(d.toString());
 };
 
@@ -44,4 +45,12 @@ const record = () => {
   return Expence;
 };
 
-export { data, categories, addExpence, yesterdayExpence, todayExpence, record };
+export {
+  data,
+  cat,
+  addExpence,
+  yesterdayExpence,
+  todayExpence,
+  record,
+  Expence,
+};

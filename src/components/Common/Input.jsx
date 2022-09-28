@@ -1,5 +1,5 @@
 const Input = (props) => {
-  const { name, label, type, placeholder, value, radio } = props;
+  const { name, label, type, placeholder, value, radio, handleClick } = props;
   return (
     <div className="input-group ">
       <div className="input-group-prepend">
@@ -16,6 +16,7 @@ const Input = (props) => {
           className="form-control"
           placeholder={placeholder}
           value={value}
+          onClick={handleClick}
           required
         />
       )}

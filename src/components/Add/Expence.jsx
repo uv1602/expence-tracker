@@ -3,67 +3,156 @@ import { WiStars } from "react-icons/wi";
 import { useState } from "react";
 import Header from "../Common/Header";
 import Message from "../Common/Message";
-import { addExpence } from "../../Service/data";
 import styles from "../Common/Dashboard.module.scss";
 import { Icon } from "@iconify/react";
-import Button from "../Common/Button";
+// import Button from "../Common/Button";
+import { expense } from "../../Service/ExpenseService";
 
+import { margin } from "@mui/system";
+import { Grid } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 const Add = () => {
   const [msg, setMsg] = useState(0);
+  const [error, handleError] = useState("");
+  const [errors, handleErrors] = useState({});
+  const [success, handleSuccess] = useState("");
+  const [form, handleForm] = useState({
+    price: "",
+    category: "",
+    dob: "",
+  });
+  const handleChange = (e) => {
+    handleForm((form) => ({ ...form, [e.target.name]: e.target.value }));
+  };
+  const [backdrop, toggleBackdrop] = useState(false);
+  const handleBlur = (e) => {
+    if (e.target.value === "") {
+      handleErrors((errors) => ({
+        ...errors,
+        [e.target.name]: `${e.target.name} is required.`,
+      }));
+    } else {
+      handleErrors((errors) => {
+        let error = { ...errors };
+        delete error[e.target.name];
+        return error;
+      });
+    }
+  };
+  const validateForm = () => {
+    return (
+      Object.keys(form).filter((field) => form[field] === "").length === 0 &&
+      Object.keys(errors).length === 0
+    );
+  };
+  const setError = (error) => {
+    handleError(error);
+    setInterval(() => handleError(""), 2000);
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { category, date, price } = e.target;
-    setMsg(1);
-    setInterval(() => setMsg(0), 3000);
+    if (!validateForm()) {
+      setError("**All fields are mandatory");
 
-    const Expences = {
-      date: date.value,
-      category: category.value,
-      amount: price.value,
-    };
+      return;
+    } else {
+      toggleBackdrop(true);
 
-    console.log(Expences);
-    addExpence(Expences);
+      expense({
+        date: form.dob,
+        cat_name: form.category,
+        amount: form.price,
+      });
+      setMsg(1);
+    }
   };
 
   return (
     <main>
-      <Header message="Add Expences" ficon={<WiStars />} />
+      <Header message="Add Expenses" ficon={<WiStars />} />
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          margin: "2%",
+        }}
+      >
+        <Grid xs={6} md={4} sm={6}>
+          <Button
+            colour={"success"}
+            url={"/dashBoard"}
+            body="Back to Dashboard"
+            ficon={
+              <Icon icon="emojione-monotone:backhand-index-pointing-left" />
+            }
+          />
+        </Grid>
+        <Grid xs={2} md={6} sm={2}></Grid>
+        <Grid xs={4} md={2} sm={4}>
+          <Button colour={"info"} url={"/show"} body="Show Record" />
+        </Grid>
+      </Grid>
 
       <div className={styles.box}>
-        <Button
-          colour={0}
-          url={"/dashBoard"}
-          body="Back to Dashboard"
-          ficon={<Icon icon="emojione-monotone:backhand-index-pointing-left" />}
-        />
-        <Button colour={1} url={"/show"} body="Show Record" />
-      </div>
-      <div className={styles.box}>
-        {msg != 0 && <Message />}
+        {msg !== 0 && <Message />}
+        <Typography component="p" variant="p" color="error">
+          {error}
+        </Typography>
         <form onSubmit={handleSubmit}>
-          <Input
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="category"
+            label="Enter Category"
+            type="text"
+            id="category"
+            value={form?.category}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            error={errors.category !== undefined}
+            helperText={errors.category}
+            xs={6}
+            InputLabelProps={{
+              color: "error",
+            }}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="dob"
+            id="dob"
             label="Date"
             type="date"
-            placeholder="Enter date"
-            name="date"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={form?.dob}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
-          <Input
-            label="Category"
-            type="text"
-            placeholder="Enter Category"
-            name="category"
-          />
-          <Input
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="price"
             label="Amount"
             type="number"
-            placeholder="Enter total amount "
-            name="price"
+            id="price"
+            value={form?.price}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            error={errors.price !== undefined}
+            helperText={errors.price}
+            xs={6}
+            InputLabelProps={{
+              color: "error",
+            }}
           />
-
-          <div class="row justify-content-md-center">
-            <div class="col-md-auto">
+          <div className="row justify-content-md-center">
+            <div className="col-md-auto">
               <button className="btn btn-primary"> Submit </button>
             </div>
           </div>

@@ -1,0 +1,77 @@
+.loginlogo{
+    border-radius: 3%;
+    width: 320px;
+   
+    position: absolute;
+    top: 50%;
+    left: 50% ;
+    transform: translate(-50%,-50%); 
+    box-sizing: border-box;  
+    padding: 40px 20px;
+}
+
+.loginbody{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background:url(../../pics/background.webp) ;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+  
+}
+
+.avatar{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.loginlogo input{
+    width: 100%;
+    
+    border:none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+   
+    font-size: 16px;
+}
+
+.loginlogo input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.loginlogo input[type="submit"]:hover
+{
+    
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  
+}
+
+span{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

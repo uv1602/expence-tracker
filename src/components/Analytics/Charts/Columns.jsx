@@ -1,21 +1,18 @@
 import ReactApexChart from "react-apexcharts";
 import styles from "./Columns.module.scss";
-import { data, categories } from "../../../Service/data";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Columns = () => {
-  const [isEdit, setIsEdit] = useState();
-  const refTest = useRef();
-
+const Columns = ({ data, categories }) => {
+  const [bar, setBar] = useState([]);
   useEffect(() => {
-    console.log("hi", refTest.current);
-  }, [refTest.current]);
+    categories(setBar);
+  }, []);
   const chartData = {
-    series: [{ data }],
+    series: bar.price,
     options: {
       chart: {
         toolbar: {
-          show: true,
+          show: false,
         },
         events: {
           click: (event, chartContext, config) => {
@@ -40,7 +37,7 @@ const Columns = () => {
         show: false,
       },
       xaxis: {
-        categories: categories,
+        categories: bar.categories,
         labels: {
           style: {
             fontSize: "12px",
@@ -76,7 +73,6 @@ const Columns = () => {
           type="bar"
           height="100%"
           width="100%"
-          ref={refTest}
         />
       </div>
     </div>

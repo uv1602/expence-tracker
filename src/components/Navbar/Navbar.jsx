@@ -2,7 +2,7 @@
 import styles from "./Navbar.module.scss";
 
 //CONTEXT
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import NavContext from "../../Context/NavContext";
 
 //REACT ROUTER
@@ -10,20 +10,27 @@ import NavUrl from "./NavUrl";
 
 //ICONS
 import { Icon } from "@iconify/react";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import {
   MdOutlineDashboard,
   MdOutlineAnalytics,
-  MdOutlinedFlag,
   MdPeopleOutline,
   MdOutlineMessage,
   MdOutlineLogout,
 } from "react-icons/md";
-import { FaReact, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { VscDashboard } from "react-icons/vsc";
+import { isLoginStatus } from "../../Service/AuthUserDetail";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const { nav, setNav } = useContext(NavContext);
+
+  useEffect(() => {
+    if (Location.pathname !== "/login" && Location.pathname !== "/register") {
+      setNav(true);
+    }
+  }, [Location.pathname]);
 
   return (
     <div
@@ -55,9 +62,16 @@ const Navbar = () => {
             description="Dashboard"
           />
 
+          {user.role === 1 && (
+            <NavUrl
+              url="admin"
+              icon={<Icon icon="eos-icons:admin-outlined" />}
+              description="Admin"
+            />
+          )}
           <NavUrl
             url="profile"
-            icon={<MdOutlineMessage />}
+            icon={<ManageAccountsIcon />}
             description="My Profile"
           />
 
@@ -77,8 +91,6 @@ const Navbar = () => {
             icon={<Icon icon="fontisto:eye" />}
             description="Record"
           />
-
-          <NavUrl url="team" icon={<MdPeopleOutline />} description="Team" />
         </ul>
 
         {/* LOGOUT BUTTON */}

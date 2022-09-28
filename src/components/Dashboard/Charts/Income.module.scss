@@ -19,14 +19,16 @@
     }
 }
 
+
 .activity_day {
-    color: #94a3b8;
+    color: white;
     font-weight: 500;
-    font-size: 0.9rem;
-    background: rgb(241, 241, 241);
+    font-size: 1rem;
+    background: darkslategray;
     margin: 1rem 0;
-    padding: 0.3rem 0;
+    padding: 1rem 0;
     padding-left: 1rem;
+    border-radius: 5rem;
 }
 
 .activities {
@@ -40,7 +42,8 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-
+    padding-left: 5%;
+    padding-right: 6%;
     .icon {
         width: 2.5rem;
         height: 2.5rem;
@@ -86,5 +89,29 @@
         .income_green {
             color: var(--clr-green);
         }
+    }
+}
+
+.content {
+    --clr-red: rgb(232, 79, 79);
+    --clr-green: rgb(42, 170, 85);
+
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.5rem;
+    font-size: 1rem;
+    @media screen and (max-width: 550px) {
+        font-size: 0.8rem;
+    }
+
+    .income {
+        font-weight: 500;
+        color: black;
+    }
+
+    .income_green {
+        color: var(--clr-green);
     }
 }

@@ -2,13 +2,14 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 1rem;
     margin-left: var(--margin-sm);
     z-index: -1;
-
+    width: 20%;
+    color:rgb(223, 223, 223);
     &:before {
         content: "";
-        width: 1px;
+        width: 3px;
         height: 1.5rem;
         background: rgb(223, 223, 223);
         margin-right: var(--margin-xs);
@@ -20,7 +21,7 @@
         bottom: -0.5rem;
         right: 0.5rem;
         transform: translateY(120%);
-        background: white;
+        background: #001E3C;
         padding: var(--padding-xs) var(--padding-lg) var(--padding-xs) var(--padding-xs);
         border-radius: 5px;
         -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.24);
@@ -30,9 +31,11 @@
         transition: all ease-in-out 0.3s;
 
         .info {
-            padding-bottom: 0.5rem;
+            padding: 1rem;
             border-bottom: 1px solid gainsboro;
-
+            gap: 1rem;
+            margin-top: 0.8rem;
+            margin-left: 0.8rem;
             .name {
                 font-size: 1rem;
                 font-weight: 400;
@@ -40,21 +43,22 @@
 
             .role {
                 font-weight: 400;
-                font-size: 0.7rem;
-                color: rgb(92, 92, 92);
+                font-size: 0.8rem;
+                color: whitesmoke;
             }
         }
 
         .settings {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 1rem;
             margin-top: 0.8rem;
+            margin-left: 0.8rem;
             a {
                 text-decoration: none;
                 color: rgba(85, 79, 232, 1);
                 font-size: 0.9rem;
-
+                gap: 1rem;
                 &:hover {
                     text-decoration: underline;
                 }
@@ -90,11 +94,11 @@
     align-items: center;
     gap: 0.1rem;
     cursor: pointer;
-
+    
     span {
         font-size: 0.8rem;
         font-weight: 500;
-        color: #475569;
+        color: #ffffff;
         @media screen and (max-width: 360px) {
             display: none;
         }

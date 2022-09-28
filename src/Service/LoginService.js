@@ -1,13 +1,15 @@
-import * as http from "./httpService"
-const login = (user) => {
-    http
-      .post("/login", user)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(() => {
-        console.log("error");
-      });
-}
+import * as http from "./httpService";
+const login = (email, password) => {
+  const user = {
+    email,
+    password,
+  };
+  return http
+    .post("/login", user)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {});
+};
 
 export default login;

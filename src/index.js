@@ -13,3 +13,15 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+// import {AuthProvider} from "./context/AuthProvider"
+//  ReactDOM.render(
+//    <React.StrictMode>
+//      <BrowserRouter>
+//     <AuthProvider>
+//       <Route path="/*" element={<App />} />
+//     </AuthProvider>
+//     </BrowserRouter>
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );

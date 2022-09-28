@@ -1,8 +1,8 @@
 import ReactApexChart from "react-apexcharts";
+import React, { useState, useEffect } from "react";
 import styles from "./Pie.module.scss";
-import { data, categories } from "../../../Service/data";
 
-const Pie = () => {
+const Pie = ({ data, cat }) => {
   const chartData = {
     series: data,
     options: {
@@ -11,23 +11,23 @@ const Pie = () => {
         type: "pie",
         events: {
           click: (event, chartContext, config) => {
-            console.log("hi", event, chartContext, config);
+            console.log(event, chartContext, config);
           },
           dataPointSelection: (e, chart, options) => {
-            console.log(e, chart, options);
+            console.log("hi", e, chart, options);
           },
         },
       },
-      labels: categories,
+      labels: cat,
       theme: {
         monochrome: {
-          enabled: true,
+          enabled: false,
         },
       },
       plotOptions: {
         pie: {
           dataLabels: {
-            offset: -5,
+            offset: 5,
           },
         },
       },
@@ -50,6 +50,7 @@ const Pie = () => {
     <div className={styles.chart}>
       <div className={styles.title}>
         <h2>Pie Chart</h2>
+        {console.log(data, cat)}
       </div>
       <div className={styles.canvas_wrapper}>
         <ReactApexChart
